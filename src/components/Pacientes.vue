@@ -14,53 +14,44 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nombre:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.Nombre" placeholder="Nombre">
+                            <input type="text" class="form-control" v-model="elementP.Nombre" placeholder="Nombre">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Apellido:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.Apellido" placeholder="Apellido">
+                            <input type="text" class="form-control" v-model="elementP.Apellido" placeholder="Apellido">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Cedula:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.Cedula" placeholder="Cedula">
+                            <input type="text" class="form-control" v-model="elementP.Cedula" placeholder="Cedula">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Celular:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.Celular" placeholder="Celular">
+                            <input type="text" class="form-control" v-model="elementP.Celular" placeholder="Celular">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Direccion:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.Direccion" placeholder="Direccion">
+                            <input type="text" class="form-control" v-model="elementP.Direccion" placeholder="Direccion">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">usuario_id:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.usuario_id" placeholder="usuario_id">
+                            <input type="text" class="form-control" v-model="elementP.usuario_id" placeholder="usuario_id">
                         </div>
                         <br>
                         <br>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Rol Usuario</label>
-                        <select class="form-control" id="exampleFormControlSelect1" v-model="elementU.rol_usuario">
-                                <option>paciente</option>
-                                <option>familiar</option>
-                                <option>medico</option>
-                                <option>enfermero</option>
-                            </select>
-                        </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
                 </div>
             </div>
             <div class="col">
-                <h2>Consultar Usuario</h2>
+                <h2>Consultar Paciente</h2>
                 <form v-on:submit.prevent="processGetUsuario">
-                    <input type="text" class="form-control" v-model="elementU.usuario_id" placeholder="Ingresa ID de usuario">
+                    <input type="text" class="form-control" v-model="elementP.id_paciente" placeholder="Ingresa ID del paciente">
                     <br>
                     <p>
                         <p>Correo:
@@ -80,24 +71,24 @@
                         <div class="form-group">
                             <label for="id">Id:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.usuario_id" placeholder="Id del usuario">
+                            <input type="text" class="form-control" v-model="elementP.usuario_id" placeholder="Id del usuario">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="Correo">Correo:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.email" placeholder="Correo">
+                            <input type="text" class="form-control" v-model="elementP.email" placeholder="Correo">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="Contraseña">Contraseña:</label>
                             <br>
-                            <input type="password" class="form-control" v-model="elementU.Contraseña" placeholder="Contraseña">
+                            <input type="password" class="form-control" v-model="elementP.Contraseña" placeholder="Contraseña">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Rol Usuario</label>
-                        <select class="form-control" id="exampleFormControlSelect1" v-model="elementU.rol_usuario">
+                        <select class="form-control" id="exampleFormControlSelect1" v-model="elementP.rol_usuario">
                                 <option>paciente</option>
                                 <option>familiar</option>
                                 <option>medico</option>
@@ -116,7 +107,7 @@
                         <div class="form-group">
                             <label for="id">Id:</label>
                             <br>
-                            <input type="text" class="form-control" v-model="elementU.usuario_id" placeholder="Id del usuario">
+                            <input type="text" class="form-control" v-model="elementP.usuario_id" placeholder="Id del usuario">
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Eliminar</button>
@@ -128,48 +119,31 @@
     <br>
     <br>
     <button type="submit" class="btn btn-secondary" v-on:click="processData">Actualizar tabla usuarios</button>
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <th>Id Paciente</th>
-                <th>Correo</th>
-                <th>Rol</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="user in user" :key="user.id">
-                <td>{{ user.usuario_id}}</td>
-                <td>{{user.email}}</td>
-                <td>{{ user.rol_usuario}}</td>
-            </tr>
-        </tbody>
-    </table>
+
 </template>
 
 <script>
 import axios from "axios";
 export default {
-    name: "Users",
+    name: "Pacientes",
     data: function () {
         return {
-            username: localStorage.getItem('username') || "none",
-            elementU:{
+            paciente: localStorage.getItem('paciente') || "none",
+            elementP:{
+                id_paciente: "",
+                Nombre: "",
+                Apellido: "",
+                Cedula: "",
+                Celular: "",
+                Direccion: "",
                 usuario_id: "",
-                email: "",
-                Contraseña: "",
-                rol_usuario: "",
-            },
-            user: [],
-            onlyOneU:{
-                usuario_id: "",
-                email: "",
-                rol_usuario: "",
+                
             },
         }
     },
     methods: {
         processData: function () {
-            axios.get("https://hos-pi-tal-tic-5.herokuapp.com/usuario/", {
+            axios.get("https://hos-pi-tal-tic-5.herokuapp.com/paciente/", {
                 headers: {},
             })
                 .then((result) => {
@@ -181,21 +155,21 @@ export default {
                 });
         },
         processCreateUser: function(){
-            axios.post("https://hos-pi-tal-tic-5.herokuapp.com/usuario/",
-            this.elementU,
+            axios.post("https://hos-pi-tal-tic-5.herokuapp.com/paciente/",
+            this.elementP,
             {
                 headers:{},
             }
             ).then((result)=>{
-                alert("Usuario creado exitosamente...");
+                alert("Paciente creado exitosamente...");
             })
             .catch((error)=>{
                 alert(error);
             });
         },
         processGetUsuario: function(){
-            axios.get(`https://hos-pi-tal-tic-5.herokuapp.com/usuario/${this.elementU.usuario_id}/`,
-            this.elementU,
+            axios.get(`https://hos-pi-tal-tic-5.herokuapp.com/usuario/${this.elementP.usuario_id}/`,
+            this.elementP,
             {
                 headers: {},
             })
@@ -209,8 +183,8 @@ export default {
         },
 
         processUpgrade: function(){
-            axios.put(`https://hos-pi-tal-tic-5.herokuapp.com/usuario/${this.elementU.usuario_id}/`,
-            this.elementU,
+            axios.put(`https://hos-pi-tal-tic-5.herokuapp.com/usuario/${this.elementP.usuario_id}/`,
+            this.elementP,
             {
                 headers: {},
             })
@@ -222,8 +196,8 @@ export default {
             })
         },
         processDelete: function(){
-            axios.delete(`https://hos-pi-tal-tic-5.herokuapp.com/usuario/${this.elementU.usuario_id}/`,
-            this.elementU,
+            axios.delete(`https://hos-pi-tal-tic-5.herokuapp.com/usuario/${this.elementP.usuario_id}/`,
+            this.elementP,
             {
                 headers: {},
             })
