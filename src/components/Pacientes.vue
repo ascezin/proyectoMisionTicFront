@@ -148,8 +148,8 @@
         </thead>
         <tbody>
             <tr v-for="paciente in paciente" :key="paciente.id">
-                <td>{{user.Nombre}}</td>
-                <td>{{ user.Cedula}}</td>
+                <td>{{paciente.Nombre}}</td>
+                <td>{{ paciente.Cedula}}</td>
             </tr>
         </tbody>
     </table>
