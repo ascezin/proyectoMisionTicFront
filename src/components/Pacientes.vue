@@ -54,9 +54,7 @@
                     <input type="text" class="form-control" v-model="elementP.id_paciente" placeholder="Ingresa ID del paciente">
                     <br>
                     <p>
-                        <p>Nombre:
-                        <span>{{ onlyOneU.Nombre}}</span>
-                        <br /></p>
+                        
                         <p>Apellido:
                         <span>{{ onlyOneU.Apellido}}</span></p>
                         <p>Cedula:
@@ -194,7 +192,6 @@ export default {
                 headers: {},
             })
             .then((result)=>{
-                this.onlyOneU.Nombre = result.data.Nombre;
                 this.onlyOneU.Apellido = result.data.Apellido;
                 this.onlyOneU.Cedula = result.data.Cedula;
                 this.onlyOneU.Celular = result.data.Celular;
