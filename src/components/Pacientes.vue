@@ -131,6 +131,7 @@
     <table class="table table-dark">
         <thead>
             <tr>
+                <th>Id Paciente</th>
                 <th>Correo</th>
                 <th>Rol</th>
             </tr>
@@ -160,6 +161,7 @@ export default {
             },
             user: [],
             onlyOneU:{
+                usuario_id: "",
                 email: "",
                 rol_usuario: "",
             },
