@@ -191,7 +191,7 @@ export default {
             })
                 .then((result) => {
                     console.log(result.data)
-                    this.user = result.data
+                    this.paciente = result.data
                 })
                 .catch((error) => {
                     alert(error)
