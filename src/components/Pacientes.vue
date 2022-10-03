@@ -217,6 +217,7 @@ export default {
                 headers: {},
             })
             .then((result)=>{
+                this.onlyOneU.Nombre = result.data.Nombre;
                 this.onlyOneU.Apellido = result.data.Apellido;
                 this.onlyOneU.Cedula = result.data.Cedula;
                 this.onlyOneU.Celular = result.data.Celular;
