@@ -55,6 +55,8 @@
                     <br>
                     <p>
                         
+                        <p>Nombre:
+                        <span>{{ onlyOneU.Nombre}}</span></p>
                         <p>Apellido:
                         <span>{{ onlyOneU.Apellido}}</span></p>
                         <p>Cedula:
@@ -137,7 +139,20 @@
     <br>
     <br>
     <button type="submit" class="btn btn-secondary" v-on:click="processData">Actualizar tabla usuarios</button>
-
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cedula</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="paciente in paciente" :key="paciente.id">
+                <td>{{user.Nombre}}</td>
+                <td>{{ user.Cedula}}</td>
+            </tr>
+        </tbody>
+    </table>
 </template>
 
 <script>
@@ -156,6 +171,16 @@ export default {
                 Direccion: "",
                 usuario_id: "",
 
+            },
+            
+            paciente: [],
+            onlyOneU:{
+                Nombre: "",
+                Apellido: "",
+                Cedula: "",
+                Celular: "",
+                Direccion: "",
+                usuario_id: "",
             },
         }
     },
