@@ -23,6 +23,9 @@
               <a class="nav-link" href="#" v-on:click="loadUsers">Usuarios</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#" v-on:click="loadPacientes">Pacientes</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#" v-on:click="loadInformation">Informacion</a>
             </li>
           </ul>
@@ -74,6 +77,9 @@ export default {
     },
     loadUsers: function () {
       this.$router.push({ name: "users" });
+    },
+    loadPacientes: function () {
+      this.$router.push({ name: "pacientes" });
     },
     loadInformation: function () {
       this.$router.push({ name: "information" });
