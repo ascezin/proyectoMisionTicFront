@@ -161,7 +161,7 @@ export default {
     name: "Pacientes",
     data: function () {
         return {
-            paciente: localStorage.getItem('paciente') || "none",
+            username: localStorage.getItem('username') || "none",
             elementP:{
                 id_paciente: "",
                 Nombre: "",
